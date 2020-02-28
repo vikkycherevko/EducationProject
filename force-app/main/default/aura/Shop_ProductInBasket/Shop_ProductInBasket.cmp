@@ -1,0 +1,33 @@
+<aura:component description="Shop_ProductInBasket" controller="ProductCardController">
+    <aura:attribute name="productInCurrentBasket" type="ProductCardController.ProductInBasket" access="public"/>
+    <aura:attribute name="currentBasketContent" type="ProductCardController.BasketContent" />
+    <aura:registerevent name="recalculateBasketPrice" type="c:RecalculateBasketPrice"/>
+    <lightning:layout class="slds-box_border slds-m-around_xx-small card-view">
+        <lightning:layoutItem class="slds-large-size--2-of-12">
+            <div class="slds-box editor slds-text-longform photo-view">
+                <lightning:formattedRichText value="{!v.productInCurrentBasket.product.Image__c}"/>
+            </div>
+        </lightning:layoutItem>
+        <lightning:layoutItem class="slds-large-size--5-of-12">
+            <div class="slds-text-heading_medium price-bar slds-col--padded-around-medium">
+                {!v.productInCurrentBasket.product.Name}
+            </div>
+        </lightning:layoutItem>
+        <lightning:layoutItem class="slds-large-size--3-of-12">
+            <div class="slds-text-heading_medium price-bar slds-col--padded-around-medium">
+            {!v.productInCurrentBasket.opportunityLineItem.TotalPrice}
+            : {!v.productInCurrentBasket.product.PricebookEntries[0].Currency_Iso_Code__c}
+            </div>
+        </lightning:layoutItem>
+        <lightning:layoutItem class="slds-large-size--3-of-12">
+            <lightning:button iconName="action:delete" iconPosition="left" variant="brand"
+                              class="button-icon-size custom-square-button basket-button"
+                              onclick="{!c.deleteFromBasket}"/>
+         <div style="max-width: 55px;">
+             <lightning:input onchange="{!c.changeProductQuantity}" type="text" label="Quantity" value="{!v.productInCurrentBasket.opportunityLineItem.Quantity}"
+                              aura:id="myInput" name="myInput" pattern="[0-9]*"/>
+         </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+
+</aura:component>

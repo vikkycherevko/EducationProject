@@ -1,0 +1,15 @@
+<aura:component description="Shop_Footer">
+    <lightning:layout
+            class="slds-page-header slds-page-header--object-home custom-menu slds-p-vertical_x-small slds-theme_default slds-theme_shade slds-border_bottom">
+        <lightning:layoutItem padding="horizontal-small slds-align_absolute-center" class="menu-sizing custom-footer">
+              <span class="pretty-font">
+                  Made By Dream Team, Kiev-2019.
+                </span>
+
+
+            <!--            <span class="slds-float&#45;&#45;right">-->
+
+            <!--                </span>-->
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="RefreshListView">
+    <aura:attribute access="public" name="checkboxValues" type="List"/>
+    <aura:attribute access="public" name="searchWord" type="String"/>
+</aura:event>

@@ -1,0 +1,43 @@
+<aura:component description="Shop_BasketModal" controller="Shop_BasketModalController">
+
+    <aura:attribute name="isBasketOpen" type="Boolean"/>
+    <aura:attribute name="opportunityLineItems" type="List"/>
+    <aura:attribute name="basketContent" type="ProductCardController.BasketContent" />
+    <!--    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />-->
+<!--    <aura:registerevent name="sitePropagatedStartUrl" type="c:RecalculateBasketPrice"/>-->
+  <!--  <aura:if isTrue="{!v.opportunityLineItems.length}"> -->
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <lightning:buttonIcon iconName="utility:close"
+                                      onclick="{! c.closeModel }"
+                                      alternativeText="close"
+                                      variant="bare-inverse"
+                                      class="slds-modal__close"/>
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Purchase list</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <lightning:layout class="slds-m-around_xx-small card-view">
+                    <div class="slds-text-align_right slds-text-heading_large">Total price : {!v.basketContent.totalPrice}</div>
+                </lightning:layout>
+                <aura:iteration items="{!v.basketContent.productsInBaskets}" var="productInBasket">
+
+                    <c:Shop_ProductInBasket productInCurrentBasket="{!productInBasket}" currentBasketContent="{!v.basketContent}"/>
+                </aura:iteration>
+            </div>
+            <footer class="slds-modal__footer">
+                <lightning:button variant="neutral"
+                                  label="Cancel"
+                                  title="Cancel"
+                                  onclick="{! c.closeModel }"/>
+                <lightning:button variant="brand"
+                                  label="Buy All"
+                                  title="Buy All"
+                                  onclick="{! c.buyAll }"/>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+<!--    </aura:if>-->
+</aura:component>

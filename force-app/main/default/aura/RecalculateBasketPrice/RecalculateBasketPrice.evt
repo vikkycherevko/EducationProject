@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="RecalculateBasketPrice">
+    <aura:attribute name="newBasketContent" type="String" />
+</aura:event>

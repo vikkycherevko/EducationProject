@@ -1,0 +1,12 @@
+<aura:component description="Shop_ProductList" controller="ProductListController">
+    <aura:attribute name="products" type="Product2[]"/>
+    <aura:attribute name="basketContent" type="ProductCardController.BasketContent" />
+
+    <lightning:layout class="max-width-list-container" multipleRows="true">
+        <aura:iteration items="{!v.products}" var="prod">
+            <lightning:layoutItem>
+                <c:Shop_ProductCard product="{!prod}" basketContent="{!v.basketContent}"/>
+            </lightning:layoutItem>
+        </aura:iteration>
+    </lightning:layout>
+</aura:component>

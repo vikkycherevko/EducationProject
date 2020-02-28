@@ -1,0 +1,41 @@
+<aura:component description="Shop_Menu">
+    <aura:attribute name="issearching"    type="Boolean" default="false"/>
+    <aura:attribute name="isBasketOpen"    type="Boolean" default="false"/>
+    <aura:registerEvent name="refreshListView" type="c:RefreshListView"/>
+
+    <lightning:layout
+            class="slds-page-header slds-page-header--object-home custom-menu slds-p-vertical_x-small slds-theme_default slds-theme_shade slds-border_bottom">
+        <lightning:layoutItem padding="horizontal-small slds-align_absolute-center" class="menu-sizing custom-menu">
+              <span class="custom-label slds-float--left">
+                 Buy:Laptop
+                </span>
+
+            <div class="">
+                <span class="slds-float--left slds-border--left search-field">
+                    <div style="width: 100%;height: 100%;" onkeyup="{! c.handleKeyUp }">
+<!--                      <lightning:input-->
+                        <!--                              aura:id="search-field"-->
+                        <!--                              label="Search when user hits the 'enter' key"-->
+                        <!--                              isLoading="{! v.issearching }"-->
+                        <!--                              variant="label-hidden"-->
+                        <!--                              name="enter-search"-->
+                        <!--                              type="search"-->
+                        <!--                      />-->
+                          <lightning:input
+                                  aura:id="enter-search"
+                                  name="enter-search"
+                                  variant="label-hidden"
+                                  isLoading="{! v.issearching }"
+                                  type="search"
+                          />
+
+    </div>
+                </span>
+
+                <span class="slds-float--right">
+                    <lightning:button iconName="utility:cart" class="custom-square-button button-icon-size" onclick="{!c.openBasketModal}"/>
+                </span>
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

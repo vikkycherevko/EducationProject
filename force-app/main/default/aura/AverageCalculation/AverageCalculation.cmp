@@ -1,0 +1,6 @@
+<aura:component description="AveragePage" implements="flexipage:availableForAllPageTypes" access="global">
+
+
+
+
+</aura:component>

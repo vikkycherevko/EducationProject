@@ -1,0 +1,68 @@
+<aura:component description="ShopPage" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" controller="ShopController">
+
+    <aura:attribute name="page" type="integer" description="using for store page Number"/>
+    <aura:attribute name="pages" type="integer" description="using for store All Pages page Number"/>
+    <aura:attribute name="total" type="integer" description="total records count store "/>
+    <aura:attribute name="products" type="Product2[]"/>
+    <aura:attribute name="Spinner" type="boolean" default="false"/>
+    <aura:attribute name="isBasketOpen" type="boolean" default="false"/>
+    <aura:attribute name="basketContent" type="ProductCardController.BasketContent" />
+
+<!--    <aura:attribute name="opportunityLineItems" type="List"/>-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:handler name="refreshListView" event="c:RefreshListView"  action="{!c.refreshListView}"/>
+    <div>
+        <c:Shop_Menu isBasketOpen = "{!v.isBasketOpen}"/>
+        <lightning:layout class="back-white slds-col--padded-around-medium"  multipleRows="true">
+            <lightning:layoutItem class="slds-border_right slds-color__border_gray-5 slds-small-size--2-of-12">
+                <c:Shop_FilterCheckBox/>
+                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                <br/>
+                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+
+                <br/>
+                xxxxxxxxxxxxxxxxxxxxxxxxx
+                <br/>
+                xxxxxxxxxxxxxxxxxxxxxxxxx
+            </lightning:layoutItem>
+
+            <lightning:layoutItem class="slds-col--padded-around-large slds-small-size--10-of-12">
+                <c:Shop_ProductList products="{!v.products}" basketContent="{!v.basketContent}"/>
+            </lightning:layoutItem>
+
+
+            <lightning:layoutItem >
+                <div class="slds-page-header" role="banner">
+                    <div class="slds-align_absolute-center">
+                        <lightning:button disabled="{!v.page == 1}" variant="brand" label="Previous Page" onclick="{! c.navigate }" />
+                        <lightning:button disabled="{!v.page == v.pages}" aura:id="previousPage" variant="brand" label="Next Page" onclick="{! c.navigate }" />
+                    </div>
+                    <p class="slds-page-header__title slds-truncate">{!v.total} Laptops • page {!v.page} / {!v.pages}</p>
+                    <ui:inputSelect aura:id="recordSize" label="Display Record Per Page: " change="{!c.onSelectChange}">
+                        <ui:inputSelectOption text="10" label="10" value="true"/>
+                        <ui:inputSelectOption text="12" label="12"/>
+                        <ui:inputSelectOption text="15" label="15"/>
+                        <ui:inputSelectOption text="20" label="20"/>
+                    </ui:inputSelect>
+                </div>
+            </lightning:layoutItem>
+
+            <aura:if isTrue="{!v.Spinner}">
+                <div aura:id="spinnerId" class="slds-spinner_container">
+                    <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                        <span class="slds-assistive-text">Loading</span>
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                    </div>
+                </div>
+            </aura:if>
+        </lightning:layout>
+        <aura:if isTrue="{!v.isBasketOpen}">
+            <c:Shop_BasketModal isBasketOpen="{!v.isBasketOpen}" opportunityLineItems="{!v.opportunityLineItems}" basketContent="{!v.basketContent}"/>
+        </aura:if>
+        <c:Shop_Footer/>
+    </div>
+</aura:component>

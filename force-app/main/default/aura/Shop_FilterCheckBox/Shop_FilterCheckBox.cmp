@@ -1,0 +1,28 @@
+<!--
+ - Created by vikto on 18.06.2019.
+ -->
+
+<aura:component description="FilterCheckbox" controller="FilterCheckboxController">
+
+    <aura:attribute access="public" name="PickersForField" type="List"/>
+    <aura:attribute access="public" name="currSelectedValue" type="String"/>
+
+    <aura:attribute name="value" type="List" default="option1"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:registerEvent name="refreshListView" type="c:RefreshListView"/>
+
+    <lightning:layout class="slds-p-horizontal_medium">
+        <div>
+
+            <aura:iteration items="{!v.PickersForField}" var="field" indexVar="index">
+                <lightning:layoutItem>
+                    <lightning:checkboxGroup name="Checkbox Group"
+                                             label="{! field.fieldLabel }"
+                                             options="{! field.options }"
+                                             value="{! field.chosedItems }"
+                                             onchange="{! c.handleChange }" />
+                </lightning:layoutItem>
+            </aura:iteration>
+        </div>
+    </lightning:layout>
+</aura:component>

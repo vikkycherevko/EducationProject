@@ -1,0 +1,70 @@
+.THIS {
+    width: 230px;
+    height: 300px;
+}
+.THIS .custom-square-button{
+    float: right;
+    padding: 0;
+}
+
+.THIS .basket-button svg {
+    background-color: aliceblue;
+    color: #407dff;
+}
+.THIS .favorite-button svg {
+    background-color: aliceblue;
+    color: red;
+}
+
+.THIS .buttons-bar {
+    position: absolute;
+    right:    10px;
+    bottom:   10px;
+}
+
+.THIS .price-bar {
+    position: absolute;
+    left:    10px;
+    bottom:   10px;
+    margin-bottom: 5px;
+}
+
+.THIS .button-icon-size svg{
+    width: 2rem;
+    height: 2rem;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.THIS .footer-height {
+    height: 20px;
+}
+
+
+.THIS .ql-align-right {
+    text-align: right;
+}
+
+.THIS .ql-align-center {
+    text-align: center;
+}
+
+.THIS .ql-font-serif {
+    font-family: serif;
+}
+
+.THIS .photo-view {
+    width: 200px;
+    height: 200px;
+    border: none;
+}
+
+.THIS .input-number {
+    width: 40px;
+    padding: 0;
+}
+
+.THIS .delete-from-basket svg{
+   fill: red;
+}

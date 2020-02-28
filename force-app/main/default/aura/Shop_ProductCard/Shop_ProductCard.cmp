@@ -1,0 +1,42 @@
+<aura:component description="Shop_ProductCard" controller="ProductCardController">
+
+    <aura:attribute name="product" type="Product2"/>
+    <aura:attribute name="productImage" type="String"/>
+    <aura:attribute name="number" type="Integer"/>
+    <aura:attribute name="basketContent" type="ProductCardController.BasketContent" />
+    <aura:attribute name="isInBasket" type="Boolean" default="false"/>
+
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }"/>
+
+    <lightning:card class="card slds-var-m-around_x-small card-sizes">
+        <aura:set attribute="title">
+            <div class="slds-align-middle">{! v.product.Name }</div>
+            <div class="slds-box editor slds-text-longform photo-view">
+                <lightning:formattedRichText value="{!v.product.Image__c}" />
+            </div>
+        </aura:set>
+        <aura:set attribute="body">
+        </aura:set>
+        <aura:set attribute="footer">
+            <div class="footer-height">
+                <div class="slds-text-heading_medium price-bar">
+                    {!v.product.PricebookEntries[0].UnitPrice} : {!v.product.PricebookEntries[0].Currency_Iso_Code__c}
+                </div>
+                <span class="buttons-bar">
+                    <aura:if isTrue="{!v.isInBasket}">
+                        <lightning:button iconName="action:delete" iconPosition="left" variant="brand"
+                     class="button-icon-size custom-square-button basket-button delete-from-basket"
+                     onclick="{!c.deleteFromBasket}"/>
+
+                    <aura:set attribute="else">
+                         <lightning:button iconName="utility:cart" iconPosition="left" variant="brand"
+                                           class="button-icon-size custom-square-button basket-button"
+                                           onclick="{!c.addProductToBasket}"/>
+                    </aura:set>
+                    </aura:if>
+
+                </span>
+            </div>
+        </aura:set>
+    </lightning:card>
+</aura:component>

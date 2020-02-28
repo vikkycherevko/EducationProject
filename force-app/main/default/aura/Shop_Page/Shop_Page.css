@@ -1,0 +1,12 @@
+/**
+ * Created by vikto on 18.06.2019.
+ */
+
+.THIS .back-white{
+    background-color: rgb(243, 242, 242);
+    width: 100%;
+    height: 100%;
+    /*overflow: none;*/
+    /*white-space: normal;*/
+    /*word-wrap: break-word;*/
+}

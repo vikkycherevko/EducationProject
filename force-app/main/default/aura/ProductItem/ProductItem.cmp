@@ -1,0 +1,16 @@
+<!--
+ - Created by TetianaSakun on 18.06.2019.
+ -->
+
+<aura:component>
+    <aura:attribute name="prodIt" type="Product2"/>
+    <lightning:card>
+        <aura:set attribute="actions">
+
+        </aura:set>
+        <p class="slds-p-horizontal_small">
+        <p><lightning:formattedText value="{v.Product2.Name}" /></p>
+        </p>
+        <lightning:button variant="success" label="Add to basket" title="Success" onclick="{! c.handleAddClick }"/>
+    </lightning:card>
+</aura:component>
